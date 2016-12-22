@@ -66,7 +66,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var css = __webpack_require__(162);
+	var css = __webpack_require__(161);
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -19878,8 +19878,62 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                "div",
-	                null,
-	                _react2.default.createElement("img", { id: "peeker", src: "../../DESIGN_ASSETS/images/pushbot-peeker.png" })
+	                { className: "nav-wrapper" },
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "logo" },
+	                    _react2.default.createElement("img", { id: "pushbot-img", src: "../../DESIGN_ASSETS/images/pushbot-peeker.png" }),
+	                    _react2.default.createElement(
+	                        "span",
+	                        null,
+	                        "Pushbot",
+	                        _react2.default.createElement(
+	                            "span",
+	                            { className: "version" },
+	                            "1.10.17"
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "nav-items" },
+	                    _react2.default.createElement(
+	                        "span",
+	                        { className: "nav-item" },
+	                        _react2.default.createElement(
+	                            "a",
+	                            { className: "navbar-link" },
+	                            "TASKS"
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "span",
+	                        { className: "nav-item" },
+	                        _react2.default.createElement(
+	                            "a",
+	                            { className: "navbar-link" },
+	                            "ROUTINES"
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "span",
+	                        { className: "nav-item" },
+	                        _react2.default.createElement(
+	                            "a",
+	                            { className: "navbar-link" },
+	                            "TEMPLATES"
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "span",
+	                        { className: "right-nav-item" },
+	                        _react2.default.createElement(
+	                            "a",
+	                            { className: "navbar-link" },
+	                            "TEAM"
+	                        )
+	                    )
+	                )
 	            );
 	        }
 	    }]);
@@ -19890,17 +19944,16 @@
 	exports.default = NavBar;
 
 /***/ },
-/* 161 */,
-/* 162 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(163);
+	var content = __webpack_require__(162);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(165)(content, {});
+	var update = __webpack_require__(164)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -19917,21 +19970,21 @@
 	}
 
 /***/ },
-/* 163 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(164)();
+	exports = module.exports = __webpack_require__(163)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "#peeker {\n  width: 50px;\n}\n", ""]);
+	exports.push([module.id, "body {\n  border: 0;\n}\n.nav-wrapper {\n  height: 10vh;\n  background-color: #51556c;\n  display: flex;\n  align-items: center;\n}\n.logo {\n  width: 33%;\n  display: inline-block;\n  background-color: #474a63;\n  height: 100%;\n}\n.logo span {\n  font-family: Helvetica, sans-serif;\n  color: #fff;\n  height: 100%;\n  float: right;\n  padding-right: 20px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: x-large;\n  font-weight: bolder;\n}\n.logo span .version {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n  font-size: x-small;\n}\n.nav-items {\n  width: 100%;\n  display: inline;\n  padding-left: 2%;\n}\n.nav-item {\n  padding: 15px;\n}\n.right-nav-item {\n  float: right;\n  padding-right: 50px;\n}\n.right-nav-item a {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n}\n.right-nav-item a:hover {\n  text-decoration: none;\n  color: #edf0f4;\n}\n.nav-item a {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n}\n.nav-item a:hover {\n  text-decoration: none;\n  color: #edf0f4;\n}\n#pushbot-img {\n  height: 100%;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 164 */
+/* 163 */
 /***/ function(module, exports) {
 
 	/*
@@ -19987,7 +20040,7 @@
 
 
 /***/ },
-/* 165 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
