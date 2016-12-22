@@ -12,10 +12,7 @@ var config = {
     },
     module : {
         loaders : [
-            {
-                test: /\.styl$/,
-                loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
-            },
+            { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader' },
             {
                 test : /\.jsx?/,
                 include : APP_DIR,
