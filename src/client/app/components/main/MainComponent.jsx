@@ -1,5 +1,6 @@
 import React from 'react';
-import NavBar from './NavBar.jsx';
+import NavBar from '../navbar/NavBar.jsx';
+import StepList from '../steplist/StepList.jsx';
 
 class MainComponent extends React.Component {
 
@@ -7,6 +8,7 @@ class MainComponent extends React.Component {
         return (
             <div>
                 <NavBar/>
+                <StepList />
             </div>
         );
     }
