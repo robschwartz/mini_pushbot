@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../navbar/NavBar.jsx';
 import StepList from '../steplist/StepList.jsx';
+import DetailView from '../detailview/DetailView.jsx';
 
 class MainComponent extends React.Component {
 
@@ -9,6 +10,7 @@ class MainComponent extends React.Component {
             <div>
                 <NavBar/>
                 <StepList />
+                <DetailView />
             </div>
         );
     }

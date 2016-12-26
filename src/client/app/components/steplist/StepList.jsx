@@ -1,4 +1,5 @@
 import React from 'react';
+import StepItem from '../stepitem/StepItem.jsx';
 
 class StepList extends React.Component {
 
@@ -8,6 +9,7 @@ class StepList extends React.Component {
                 <div className="labels">
                     <p className="trigger">Triggers</p>
                     <p className="step">Steps</p>
+                    <StepItem/>
                 </div>
             </div>
         );

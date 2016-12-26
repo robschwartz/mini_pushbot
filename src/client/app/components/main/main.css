@@ -58,7 +58,7 @@
   height: 100%;
 }
 .steplist-container {
-  width: 23%;
+  width: 25%;
   float: left;
   overflow: auto;
   height: 100vh;
@@ -80,4 +80,11 @@
 }
 .trigger {
   background: #35adae;
+}
+.dv-container {
+  width: 75%;
+  float: right;
+  background-color: #edf0f4;
+  height: 100%;
+  overflow: auto;
 }
