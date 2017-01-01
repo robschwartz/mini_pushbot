@@ -19,6 +19,7 @@ var config = {
                 loader : 'babel'
             },
             { test: /\.json$/, loader: 'json' },
+            { test: /\.png$/, loader: "url-loader?mimetype=image/png" }
 
         ]
     }
