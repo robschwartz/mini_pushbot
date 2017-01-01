@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 
 
-
 // import process from './processReducer';
 import stepReducer from 'stepReducers';
 

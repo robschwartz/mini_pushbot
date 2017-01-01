@@ -1,15 +1,12 @@
 import React from 'react';
 
-class StepItem extends React.Component {
+const StepItem = (props) => {
 
-    render() {
-        return (
-            <div className="stepitem-container">
-
-            </div>
-        );
-    }
-
-}
+    return (
+        <div className="stepitem-container">
+            {props.step.stepName}
+        </div>
+    );
+};
 
 export default StepItem;

@@ -66,15 +66,15 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var css = __webpack_require__(166);
+	var css = __webpack_require__(167);
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
 
-	    function App() {
+	    function App(props) {
 	        _classCallCheck(this, App);
 
-	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 	    }
 
 	    _createClass(App, [{
@@ -19815,6 +19815,10 @@
 
 	var _DetailView2 = _interopRequireDefault(_DetailView);
 
+	var _steps = __webpack_require__(166);
+
+	var _steps2 = _interopRequireDefault(_steps);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19823,13 +19827,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var MainComponent = function (_React$Component) {
-	    _inherits(MainComponent, _React$Component);
+	var MainComponent = function (_Component) {
+	    _inherits(MainComponent, _Component);
 
-	    function MainComponent() {
+	    function MainComponent(props) {
 	        _classCallCheck(this, MainComponent);
 
-	        return _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+
+	        _this.state = { steps: _steps2.default };
+	        return _this;
 	    }
 
 	    _createClass(MainComponent, [{
@@ -19839,14 +19846,14 @@
 	                'div',
 	                null,
 	                _react2.default.createElement(_NavBar2.default, null),
-	                _react2.default.createElement(_StepList2.default, null),
+	                _react2.default.createElement(_StepList2.default, { steps: this.state.steps }),
 	                _react2.default.createElement(_DetailView2.default, null)
 	            );
 	        }
 	    }]);
 
 	    return MainComponent;
-	}(_react2.default.Component);
+	}(_react.Component);
 
 	exports.default = MainComponent;
 
@@ -19963,8 +19970,6 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -19975,48 +19980,31 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var StepList = function StepList(props) {
+	    var stepItems = props.steps.map(function (step) {
+	        return _react2.default.createElement(_StepItem2.default, { key: step.stepNumber, step: step });
+	    });
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var StepList = function (_React$Component) {
-	    _inherits(StepList, _React$Component);
-
-	    function StepList() {
-	        _classCallCheck(this, StepList);
-
-	        return _possibleConstructorReturn(this, (StepList.__proto__ || Object.getPrototypeOf(StepList)).apply(this, arguments));
-	    }
-
-	    _createClass(StepList, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'steplist-container' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'labels' },
-	                    _react2.default.createElement(
-	                        'p',
-	                        { className: 'trigger' },
-	                        'Triggers'
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        { className: 'step' },
-	                        'Steps'
-	                    ),
-	                    _react2.default.createElement(_StepItem2.default, null)
-	                )
-	            );
-	        }
-	    }]);
-
-	    return StepList;
-	}(_react2.default.Component);
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'steplist-container' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'labels' },
+	            _react2.default.createElement(
+	                'p',
+	                { className: 'trigger' },
+	                'Triggers'
+	            ),
+	            _react2.default.createElement(
+	                'p',
+	                { className: 'step' },
+	                'Steps'
+	            ),
+	            stepItems
+	        )
+	    );
+	};
 
 	exports.default = StepList;
 
@@ -20030,38 +20018,20 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var StepItem = function StepItem(props) {
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var StepItem = function (_React$Component) {
-	    _inherits(StepItem, _React$Component);
-
-	    function StepItem() {
-	        _classCallCheck(this, StepItem);
-
-	        return _possibleConstructorReturn(this, (StepItem.__proto__ || Object.getPrototypeOf(StepItem)).apply(this, arguments));
-	    }
-
-	    _createClass(StepItem, [{
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement("div", { className: "stepitem-container" });
-	        }
-	    }]);
-
-	    return StepItem;
-	}(_react2.default.Component);
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "stepitem-container" },
+	        props.step.stepName
+	    );
+	};
 
 	exports.default = StepItem;
 
@@ -20226,15 +20196,444 @@
 
 /***/ },
 /* 166 */
+/***/ function(module, exports) {
+
+	module.exports = [
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "request-payroll-information",
+			"stepNumber": 1,
+			"displayName": "Fill out basic info",
+			"description": "Please provide the following information about the new employee.",
+			"createdBy": "sean",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [
+				{
+					"displayName": "Office Location",
+					"type": "choice",
+					"choices": [
+						"Naperville",
+						"Chicago",
+						"Remote"
+					],
+					"fieldName": "office-location"
+				},
+				{
+					"displayName": "Personal Email",
+					"type": "string",
+					"choices": [
+						""
+					],
+					"fieldName": "personal-email"
+				}
+			],
+			"roleID": "d0a559fe-60ea-4140-9698-2f136d95ef04",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "fill-out-personal-information",
+			"stepNumber": 2,
+			"displayName": "Fill out personal information",
+			"createdBy": "sean",
+			"maximumDuration": null,
+			"priority": "medium",
+			"requiredPreviousSteps": [],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [],
+			"roleID": "fb0888b3-d4c7-420f-b9e4-d3be881a64cf",
+			"role": {
+				"users": []
+			},
+			"appStep": {
+				"params": {
+					"to": "{{Personal Email}}",
+					"files": "*",
+					"body": "Hi {{First Name}}!\n\nWelcome aboard! We are excited to have you join and look forward to working together!\n\nThis email represents your first Pushbot Email Task. Please respond back with the following information:\n\n",
+					"undefined": "*",
+					"subject": "Welcome Aboard!",
+					"responseFiles": "*"
+				},
+				"appID": "email/assignment/v1"
+			}
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "set-up-on-trinet-payroll",
+			"stepNumber": 3,
+			"displayName": "Set up on Trinet payroll",
+			"description": "Go to [Trinet HRPassport](http://www.hrpassport.com) > My Staff > New Hire and enter necessary info.",
+			"createdBy": "sean",
+			"maximumDuration": "3 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [
+				"request-payroll-information"
+			],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [],
+			"roleID": "5eded9fc-71d3-47aa-9ee6-5940a714c4ea",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "request-i-9-verification",
+			"stepNumber": 4,
+			"displayName": "Verify I-9",
+			"description": "Please go to Trinet and set up an account. Fill out the employee side I-9 verification. Attach a copy of your I-9 identification for company-side verification. Acceptable forms of identification include:\n\n- Passport (the best option)\n- Driver's license and birth certificate",
+			"createdBy": "sean",
+			"maximumDuration": "3 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [
+				"set-up-on-trinet-payroll"
+			],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [
+				{
+					"displayName": "Identification",
+					"type": "file",
+					"choices": [
+						""
+					],
+					"fieldName": "identification"
+				}
+			],
+			"roleID": "68ae650b-a4aa-4895-992a-461c67fc4f84",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "confirm-i-9-verification",
+			"stepNumber": 5,
+			"displayName": "Confirm I-9 verification",
+			"description": "Go to HRPassport > My Company > I-9 Service Center and verify I-9.",
+			"createdBy": "sean",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [
+				"request-i-9-verification"
+			],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [],
+			"roleID": "be0404d8-3820-4981-bfbe-b085540fda23",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "fill-out-1871-form",
+			"stepNumber": 6,
+			"displayName": "Give Naperville key",
+			"createdBy": "sean",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [
+				"office-location",
+				"request-payroll-information"
+			],
+			"previousSteps": [],
+			"conditions": [
+				"office-location = \"Naperville\""
+			],
+			"fields": [],
+			"roleID": "8a019fde-5d80-4d12-8a8b-1d8614d9c40c",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "give-1871-key",
+			"stepNumber": 7,
+			"displayName": "Give 1871 key",
+			"createdBy": "sean",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [
+				"office-location",
+				"request-payroll-information"
+			],
+			"previousSteps": [],
+			"conditions": [
+				"office-location = \"Chicago\""
+			],
+			"fields": [],
+			"roleID": "6516f64b-c39f-484c-8e1f-67a005de44bf",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "employee-license-plate-number",
+			"stepNumber": 8,
+			"displayName": "Employee license plate number",
+			"description": "Please provide if you plan on parking at the Naperville office",
+			"createdBy": "sean",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [
+				"office-location",
+				"request-payroll-information"
+			],
+			"previousSteps": [],
+			"conditions": [
+				"office-location = \"Naperville\""
+			],
+			"fields": [
+				{
+					"displayName": "License Plate #",
+					"type": "string",
+					"choices": [
+						""
+					],
+					"fieldName": "license-plate"
+				},
+				{
+					"displayName": "License Plate State of Issue",
+					"type": "string",
+					"choices": [
+						""
+					],
+					"fieldName": "license-plate-state-of-issue"
+				},
+				{
+					"displayName": "Vehicle Description (Color Make Model)",
+					"type": "string",
+					"choices": [
+						""
+					],
+					"fieldName": "vehicle-description-color-make-model"
+				}
+			],
+			"roleID": "84118039-cda8-4272-a552-8d343be803d6",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "step-15",
+			"stepNumber": 9,
+			"displayName": "Systems",
+			"createdBy": "andrew",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [
+				{
+					"displayName": "Systems",
+					"type": "many",
+					"choices": [
+						"Slack",
+						"Github",
+						"Front",
+						"InVision",
+						"Pipedrive",
+						"Kustomer",
+						"Postman",
+						"CircleCI",
+						"Segment",
+						"Expensify",
+						"Zenhub",
+						"Apiary",
+						"Heap"
+					],
+					"fieldName": "systems"
+				}
+			],
+			"roleID": "25c062cd-299b-422d-8850-29799f676a44",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "specify-optional-requirements",
+			"stepNumber": 10,
+			"displayName": "Specify optional requirements",
+			"description": "Please review the following options and select any that the employee will require.",
+			"createdBy": "sean",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [
+				{
+					"displayName": "Microsoft Office",
+					"type": "bool",
+					"choices": [
+						""
+					],
+					"fieldName": "microsoft-office"
+				}
+			],
+			"roleID": "d5768c1b-6f39-4b20-a6de-e35a8fb704d7",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "desk-setup",
+			"stepNumber": 11,
+			"displayName": "Desk Setup",
+			"createdBy": "andrew",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [],
+			"previousSteps": [
+				"fill-out-1871-form",
+				"give-1871-key",
+				"chicago-naperville-keys"
+			],
+			"conditions": [],
+			"fields": [],
+			"roleID": "ced6e7e1-1ada-46fe-ae6b-2e160cfc99dc",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "add-to-microsoft-office",
+			"stepNumber": 12,
+			"displayName": "Add to Microsoft Office",
+			"description": "Go to the [Office Admin Center](https://portal.office.com/AdminPortal/Home?switchtomoderndefault=true#/homepage) and add user.",
+			"createdBy": "sean",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [
+				"specify-optional-requirements"
+			],
+			"previousSteps": [],
+			"conditions": [
+				"microsoft-office = \"true\""
+			],
+			"fields": [],
+			"roleID": "09a49689-7ffa-433d-a8a3-0a81d8197bc9",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		},
+		{
+			"teamName": "catalytic",
+			"processName": "onboard-employee",
+			"processID": "8e1a3287-f456-4fbd-889e-c944a9a72e1d",
+			"stepName": "business-cards",
+			"stepNumber": 13,
+			"displayName": "Business Cards",
+			"createdBy": "andrew",
+			"maximumDuration": "7 days",
+			"priority": "medium",
+			"requiredPreviousSteps": [],
+			"previousSteps": [],
+			"conditions": [],
+			"fields": [
+				{
+					"displayName": "Employee Name",
+					"type": "string",
+					"choices": [
+						""
+					],
+					"fieldName": "employee-name"
+				},
+				{
+					"displayName": "Title",
+					"type": "string",
+					"choices": [
+						""
+					],
+					"fieldName": "title"
+				},
+				{
+					"displayName": "Email Address",
+					"type": "email",
+					"choices": [
+						""
+					],
+					"fieldName": "email-address"
+				},
+				{
+					"displayName": "Phone Number",
+					"type": "string",
+					"choices": [
+						""
+					],
+					"fieldName": "phone-number"
+				}
+			],
+			"roleID": "d4b63971-0a6b-473f-be6a-e8044eef8fc4",
+			"role": {
+				"users": []
+			},
+			"appStep": null
+		}
+	];
+
+/***/ },
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(167);
+	var content = __webpack_require__(168);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(169)(content, {});
+	var update = __webpack_require__(170)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -20251,10 +20650,10 @@
 	}
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(168)();
+	exports = module.exports = __webpack_require__(169)();
 	// imports
 
 
@@ -20265,7 +20664,7 @@
 
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports) {
 
 	/*
@@ -20321,7 +20720,7 @@
 
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
