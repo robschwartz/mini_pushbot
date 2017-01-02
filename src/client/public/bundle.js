@@ -20025,6 +20025,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var StepItem = function StepItem(props) {
+	    var requiredStep = function requiredStep() {
+	        if (props.step.requiredPreviousSteps) {
+	            return props.step.requiredPreviousSteps;
+	        }
+	    };
 
 	    return _react2.default.createElement(
 	        "div",
@@ -20039,7 +20044,12 @@
 	            { className: "si-name" },
 	            props.step.displayName
 	        ),
-	        _react2.default.createElement("img", { src: "../../DESIGN_ASSETS/images/ham_menu_icon.png" })
+	        _react2.default.createElement("img", { src: "../../DESIGN_ASSETS/images/ham_menu_icon.png" }),
+	        _react2.default.createElement(
+	            "div",
+	            { className: "si-required-step" },
+	            requiredStep()
+	        )
 	    );
 	};
 
@@ -20668,7 +20678,7 @@
 
 
 	// module
-	exports.push([module.id, ".nav-wrapper {\n  height: 10vh;\n  background-color: #51556c;\n  display: flex;\n  align-items: center;\n}\n.logo {\n  width: 34%;\n  display: inline-block;\n  background-color: #474a63;\n  height: 100%;\n}\n.logo span {\n  font-family: Helvetica, sans-serif;\n  color: #fff;\n  height: 100%;\n  float: right;\n  padding-right: 20px;\n  display: flex;\n  align-items: center;\n  font-size: x-large;\n  font-weight: bolder;\n}\n.logo span .version {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n  font-size: x-small;\n}\n.nav-items {\n  width: 100%;\n  display: inline;\n  padding-left: 2%;\n}\n.nav-item {\n  padding: 15px;\n}\n.right-nav-item {\n  float: right;\n  padding-right: 50px;\n}\n.right-nav-item a {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n}\n.right-nav-item a:hover {\n  text-decoration: none;\n  color: #edf0f4;\n}\n.nav-item a {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n}\n.nav-item a:hover {\n  text-decoration: none;\n  color: #edf0f4;\n}\n#pushbot-img {\n  height: 100%;\n}\n.steplist-container {\n  width: 25%;\n  float: left;\n  overflow: auto;\n  height: 100vh;\n}\n.labels p {\n  color: #fff;\n  float: center;\n  font-family: Helvetica, sans-serif;\n  height: 30px;\n  margin-top: 0;\n  margin-bottom: 1;\n  display: flex;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n}\n.step {\n  background: #3fd1ce;\n}\n.trigger {\n  background: #35adae;\n}\n.si-container {\n  height: 5em;\n  font-family: Helvetica, sans-serif;\n  border-bottom: 2px solid #e1e1e2;\n  display: flex;\n  align-items: center;\n  align-content: center;\n}\n.si-container:hover {\n  background: #f5f5f6;\n}\n.si-container .si-number {\n  color: #e1e1e2;\n  float: left;\n  font-size: x-large;\n  margin-right: 8px;\n}\n.si-container .si-name {\n  font-size: inherit;\n}\n.si-container img {\n  height: 16;\n  margin-left: auto;\n  padding-right: 12;\n}\n.dv-container {\n  width: 75%;\n  float: right;\n  background-color: #edf0f4;\n  height: 100%;\n  overflow: auto;\n}\n", ""]);
+	exports.push([module.id, ".nav-wrapper {\n  height: 10vh;\n  background-color: #51556c;\n  display: flex;\n  align-items: center;\n}\n.logo {\n  width: 34%;\n  display: inline-block;\n  background-color: #474a63;\n  height: 100%;\n}\n.logo span {\n  font-family: Helvetica, sans-serif;\n  color: #fff;\n  height: 100%;\n  float: right;\n  padding-right: 20px;\n  display: flex;\n  align-items: center;\n  font-size: x-large;\n  font-weight: bolder;\n}\n.logo span .version {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n  font-size: x-small;\n}\n.nav-items {\n  width: 100%;\n  display: inline;\n  padding-left: 2%;\n}\n.nav-item {\n  padding: 15px;\n}\n.right-nav-item {\n  float: right;\n  padding-right: 50px;\n}\n.right-nav-item a {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n}\n.right-nav-item a:hover {\n  text-decoration: none;\n  color: #edf0f4;\n}\n.nav-item a {\n  color: #898d93;\n  font-family: Helvetica, sans-serif;\n}\n.nav-item a:hover {\n  text-decoration: none;\n  color: #edf0f4;\n}\n#pushbot-img {\n  height: 100%;\n}\n.steplist-container {\n  width: 25%;\n  float: left;\n  overflow: auto;\n  height: 100vh;\n}\n.labels p {\n  color: #fff;\n  float: center;\n  font-family: Helvetica, sans-serif;\n  height: 30px;\n  margin-top: 0;\n  margin-bottom: 1;\n  display: flex;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n}\n.step {\n  background: #3fd1ce;\n}\n.trigger {\n  background: #35adae;\n}\n.si-container {\n  height: 5em;\n  font-family: Helvetica, sans-serif;\n  border-bottom: 2px solid #e1e1e2;\n  display: flex;\n  align-items: center;\n  align-content: center;\n  flex-wrap: wrap;\n}\n.si-container:hover {\n  background: #f5f5f6;\n}\n.si-container .si-number {\n  color: #e1e1e2;\n  float: left;\n  font-size: x-large;\n  margin-right: 8px;\n  margin-left: 8px;\n  min-width: 1.25em;\n}\n.si-container .si-name {\n  font-size: inherit;\n}\n.si-container img {\n  height: 16;\n  margin-left: auto;\n  padding-right: 12;\n}\n.si-container .si-required-step {\n  color: #808080;\n  font-size: x-small;\n  width: 90%;\n  margin-left: 4.75em;\n}\n.dv-container {\n  width: 75%;\n  float: right;\n  background-color: #edf0f4;\n  height: 100%;\n  overflow: auto;\n}\n", ""]);
 
 	// exports
 
